@@ -1,0 +1,31 @@
+.logo
+{
+  margin: 24px;
+}
+hr.faded
+{
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(22, 45, 80, 0), rgba(22, 45, 80, 0.75), rgba(22, 45, 80, 0));
+  text-align: center;
+  color: #162d50;
+}
+hr.faded:after
+{
+  content: "�";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+  background: white;
+}
+h1, h2, h3, h4, h5, h6
+{
+  font-family: nickainleyregular;
+  color: #5c204f;
+}
+.navbar-brand {
+  padding-top:9px;
+  font: 21pt nickainleyregular;
+}

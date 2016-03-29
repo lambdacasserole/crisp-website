@@ -74,13 +74,13 @@
      bordercolor="#666666"
      borderopacity="1.0"
      id="base"
-     inkscape:cx="-4.2918305"
+     inkscape:cx="-80.423588"
      inkscape:cy="118.67817"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:window-height="1017"
      inkscape:window-width="1920"
-     inkscape:window-x="-8"
+     inkscape:window-x="3352"
      inkscape:window-y="-8"
      inkscape:zoom="1.9637009"
      pagecolor="#ffffff"
@@ -91,13 +91,14 @@
      fit-margin-bottom="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="g4801"
-     showguides="false" />
+     showguides="false"
+     inkscape:snap-nodes="false" />
   <defs
      id="defs3" />
   <g
      id="g4801">
     <rect
-       style="opacity:0.98999999;fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none"
+       style="opacity:0.98999999;fill:#808080;fill-opacity:1;stroke:none;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect5463"
        width="12.963199"
        height="87.861679"

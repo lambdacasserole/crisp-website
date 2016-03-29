@@ -1,4 +1,4 @@
-﻿;; Crisp example webpage.
+﻿;; Crisp "Home" page.
 ;; Copyright © Saul Johnson 2015-2016
 
 #require "~/lib/web.cspl"
@@ -6,6 +6,6 @@
 
 (lambda (url verb post)
 	(respond
-		(render-template-file "base.template.html" (
+		(render-template-file "templates/base.template.html" (
 			("title" . "Home")
-			("body" . (render-template-file "index.template.html" ())))) 200 "text/html"))
+			("body" . (render-template-file "templates/index.template.html" ())))) 200 "text/html"))

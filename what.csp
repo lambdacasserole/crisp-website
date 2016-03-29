@@ -1,0 +1,14 @@
+﻿;; Crisp "What is Crisp?" page.
+;; Copyright © Saul Johnson 2015-2016
+
+#require "~/lib/web.cspl"
+#require "~/lib/templating.cspl"
+
+#require "~/public-www/highlighter.cspl"
+
+(lambda (url verb post)
+	(respond
+		(render-template-file "templates/base.template.html" (
+			("title" . "What is Crisp?")
+			("body" . (render-template-file "templates/what.template.html" (
+				("code" . (highlight (file-get-text "foobar.txt")))))))) 200 "text/html"))

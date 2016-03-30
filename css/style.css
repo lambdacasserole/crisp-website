@@ -20,9 +20,13 @@ hr.faded:after
   padding: 0 0.25em;
   background: white;
 }
-h1, h2, h3, h4, h5, h6
+h1, h2
 {
   font-family: nickainleyregular;
+}
+h1, h2, h3, h4, h5, h6
+{
+	
   color: #5c204f;
 }
 .navbar-brand {

@@ -1,0 +1,13 @@
+;; Crisp example program.
+;; Author: Saul Johnson
+;; Notes: Replaces every occurrence of 'foo' in the document in the file 
+;; specified by the 'input' parameter and writes the result to the file 
+;; specified by the 'output' parameter.
+
+;; Every program is a single lambda (i.e. function).
+(lambda (input output) 
+	;; The let block allows you to bind symbols to expressions (i.e. declare variables).
+	(let 
+		;; Here we actually write the file contents.
+		(file-set-text output (replace contents "foo" "bar")) 
+		(contents . (file-get-text path))))

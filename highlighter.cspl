@@ -62,6 +62,6 @@
 			"let" 
 			"file-set-text" 
 			"replace" 
-			"file-get-text")) ;; Function names to highlight.
+			"file-get-text"
+			"add")) ;; Function names to highlight.
 		(encoded . (html-encode src))))) ;; HTML-encode output.
-		

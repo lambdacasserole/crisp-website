@@ -1,0 +1,11 @@
+;; Crisp "Blog" page.
+;; Copyright © Saul Johnson 2015-2016
+
+#require "~/lib/web.cspl"
+#require "~/lib/templating.cspl"
+
+(lambda (url verb post)
+	(respond
+		(render-template-file "templates/base.template.html" (
+			("title" . "Blog")
+			("body" . (render-template-file "templates/blog.template.html" ())))) 200 "text/html")) 

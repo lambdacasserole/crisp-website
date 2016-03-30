@@ -1,0 +1,14 @@
+;; Crisp "Language" page.
+;; Copyright © Saul Johnson 2015-2016
+
+#require "~/lib/web.cspl"
+#require "~/lib/templating.cspl"
+
+#require "~/public-www/highlighter.cspl"
+
+(lambda (url verb post)
+	(respond
+		(render-template-file "templates/base.template.html" (
+			("title" . "Getting Started")
+			("body" . (render-template-file "templates/gettingstarted.template.html" (
+				("code" . (highlight (file-get-text "gettingstarted.txt")))))))) 200 "text/html")) 

@@ -1,0 +1,7 @@
+;; Crisp example program.
+;; Author: Saul Johnson
+;; Notes: Adds two numbers.
+
+(lambda (x y) 
+	;; Return the sum of x and y, the two passed parameters.
+	(add x y))

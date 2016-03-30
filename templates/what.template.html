@@ -15,12 +15,25 @@
 			From taking a glance over that source code, we can see that:
 		</p>
 		<ul>
-			<li></li>
+			<li>
+				Crisp is purely functional - unlike programming languages such as C# and PHP,
+				Crisp programs are composed from function applications rather than classes and
+				methods.
+			</li>
+			<li>
+				A Crisp program is a &quot;lambda&quot; (i.e. a function) that can take parameters. These
+				parameters can be passed to the program via the command line: <br/>
+				<code>crisp.exe -f example.csp -a &quot;\&quot;foo.txt\&quot; \&quot;bar.txt\&quot;&quot;</code>
+			</li>
 		</ul>
 		<p>
-			Importantly, Crisp is lazily evaluated. Any values you bind in <code>let</code>
-			or <code>letrec</code> blocks aren't actually evaluated until they're used in your
-			executing code.
+			This entire website, including the syntax highlighting on that code snippet above, <b>is all powered 
+			by Crisp</b>. If you're interested, check out <a href="highlighter.zip">the code used</a> to highlight
+			the program above. When you're ready, head on to the next section and read about 
+			<a href="language.csp">the language</a> itself!
+		</p>
+		<p class="text-right">
+			<a href="language.csp" class="btn btn-link">The Crisp language &gt;&gt;</a>
 		</p>
 	</div>
 </div>

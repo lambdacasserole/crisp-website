@@ -1,0 +1,11 @@
+;; Crisp example program.
+;; Author: Saul Johnson
+;; Notes: Increments a number by 1 using an 'increment' function.
+
+(lambda (x) 
+	(let 
+		;; Call the increment function with the value passed to the program.
+		(increment x) 
+		;; Bind a lambda to the 'increment' symbol that will return the value
+		;; of its paramater plus 1.
+		(increment . (lambda (n) (add n 1))))) 

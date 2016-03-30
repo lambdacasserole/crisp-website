@@ -1,0 +1,123 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>The Language</h1>
+		<p>
+			The Crisp language is extremely simple at its core, using the same representation for code and data. Just like in Common Lisp,
+			Crisp programs are just lists that are evaluated according to a set of rules.
+		<p>
+		<h2>Types of Expression</h2>
+		<p>
+			Symbolic expressions (or s-expressions) can be of one of several different types in Crisp. An expression
+			is considered <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)#Atoms" target="_blank">atomic</a> 
+			if it is not a pair or a function.
+		</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Name</th>
+				<th>Atomic?</th>
+				<th>Examples</th>
+				<th>Notes</th>
+			</tr>
+			<tr>
+				<td>Boolean</td>
+				<td><span class="label label-success">Yes</span></td>
+				<td><code>true</code> <code>false</code></td>
+				<td>
+					The <code>true</code> or <code>false</code> keywords evaluate to boolean atoms
+					in Crisp.
+				</td>
+			</tr>
+			<tr>
+				<td>Constant</td>
+				<td><span class="label label-success">Yes</span></td>
+				<td><code>(quote my-constant)</code></td>
+				<td>
+					In Crisp, calling the <code>quote</code> special form on a symbol or list will return
+					it as a data structure instead of evaluating it (that is, with symbols converted to
+					constants).
+				</td>
+			</tr>
+			<tr>
+				<td>Lambda</td>
+				<td><span class="label label-danger">No</span></td>
+				<td><code>(lambda (x) (add x 1))</code></td>
+				<td>
+					The <code>lambda</code> function can be used to create a callable closure. For example,
+					if the lambda on the left was bound to a symbol <code>increment</code> then calling
+					<code>(increment 3)</code> would return <code>4</code>.
+				</td>
+			</tr>
+			<tr>
+				<td>Nil</td>
+				<td><span class="label label-success">Yes</span></td>
+				<td><code>nil</code></td>
+				<td>
+					The <code>nil</code> keyword represents a null value in Crisp.
+				</td>
+			</tr>
+			<tr>
+				<td>Numeric</td>
+				<td><span class="label label-success">Yes</span></td>
+				<td><code>9</code> <code>12.358</code> <code>-5</code></td>
+				<td>
+					Numeric atoms are just numbers. They have the equivalent precision of a 
+					<code>double</code> in C#.
+				</td>
+			</tr>
+			<tr>
+				<td>Pair</td>
+				<td><span class="label label-danger">No</span></td>
+				<td><code>(1 . 2)</code> <code>("hello" . "world")</code></td>
+				<td>
+					A pair is the basic building block of a list. It's the simplest data structure possible,
+					consisting of a pair of expressions bound together in a <i>cons</i> cell. Read more about
+					it <a target="_blank" href="https://en.wikipedia.org/wiki/Cons">on Wikipedia</a>.
+				</td>
+			</tr>
+			<tr>
+				<td>String</td>
+				<td><span class="label label-success">Yes</span></td>
+				<td><code>"hello"</code> <code>"world"</code></td>
+				<td>
+					A string represents a sequence of characters. Even though it is possible to manipulate
+					strings in Crisp, they are immutable and considered to be atoms.
+				</td>
+			</tr>
+		</table>
+		<h2>Crisp Is Lazy</h2>
+		<p>
+			Importantly, Crisp is lazily evaluated. Any values you bind in <code>let</code>
+			or <code>letrec</code> blocks aren't actually evaluated until they're used in your
+			executing code. Let's take a look back at our example:
+		</p>
+		<pre>{code}</pre>
+		<p>
+			The call to the <code>file-get-text</code> function only happens when we actually need its value,
+			so nothing is read from disk until the evaluator hits line 12. If we comment out the line that
+			actually requires the value of <code>contents</code> and replace it with a simple addition, for example:
+		</p>
+		<pre>{code_2}</pre>
+		<p>
+			Now, no data is actually read from disk because the expression bound to the <code>contents</code> symbol
+			is never evaluated. This is extrememly important to bear in mind when your code is designed to produce
+			side-effects (for example, writing a record to a database or a text file to disk).
+		</p>
+		<h2>Binding Values &amp; Applying Functions</h2>
+		<p>
+			To apply a function, we write a list with the symbol bound to the function as its first element, followed
+			by any parameters we want to pass to the function. For example, in the following program we create a lambda
+			that will increment any given number by 1, then we bind it to the symbol <code>increment</code>. In the body
+			of the <code>let</code> block, we make a call to the lambda bound to increment, passing in the number that
+			the user specified on the command line:
+		</p>
+		<pre>{code_3}</pre>
+		<p>
+			Now if we run this program on the command line using <code>crisp.exe -f "increment.csp" -a 5</code> we'll get
+			the number <code>6</code> passed back as the result; we just incremented a number! Now head over to the
+			<a href="gettingstarted.csp">getting started page</a> to write your first Crisp program!
+		</p>
+		<p class="text-right">
+			<a href="gettingstarted.csp" class="btn btn-link">Getting started &gt;&gt;</a>
+		</p>
+	</div>
+</div>

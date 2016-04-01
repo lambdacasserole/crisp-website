@@ -4,8 +4,8 @@
 #require "~/lib/web.cspl"
 #require "~/lib/templating.cspl"
 
-(lambda (url verb post)
+(lambda (url verb post headers)
 	(respond
 		(render-template-file "templates/base.template.html" (
 			("title" . "Blog")
-			("body" . (render-template-file "templates/blog.template.html" ())))) 200 "text/html")) 
+			("body" . (render-template-file "templates/blog.template.html" ())))) 200 "text/html" ())) 

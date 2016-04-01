@@ -1,6 +1,6 @@
 ;; Crisp mimimal dynamic page.
 ;; Copyright © Saul Johnson 2015-2016
 
-(lambda (url verb post)
+(lambda (url verb post headers)
 	;; Webpage code goes here! 
 	)

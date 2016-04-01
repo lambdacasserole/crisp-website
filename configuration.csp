@@ -6,8 +6,8 @@
 
 #require "~/public-www/highlighter.cspl"
 
-(lambda (url verb post)
+(lambda (url verb post headers)
 	(respond
 		(render-template-file "templates/base.template.html" (
 			("title" . "Configuring Packet")
-			("body" . (render-template-file "templates/configuration.template.html" ())))) 200 "text/html")) 
+			("body" . (render-template-file "templates/configuration.template.html" ())))) 200 "text/html" ())) 

@@ -6,11 +6,11 @@
 
 #require "~/public-www/highlighter.cspl"
 
-(lambda (url verb post)
+(lambda (url verb post headers)
 	(respond
 		(render-template-file "templates/base.template.html" (
 			("title" . "The Language")
 			("body" . (render-template-file "templates/the-language.template.html" (
 				("code" . (highlight (file-get-text "lazy.txt")))
 				("code_2" . (highlight (file-get-text "lazy_2.txt")))
-				("code_3" . (highlight (file-get-text "binding.txt")))))))) 200 "text/html"))
+				("code_3" . (highlight (file-get-text "binding.txt")))))))) 200 "text/html" ()))

@@ -6,10 +6,10 @@
 
 #require "~/public-www/highlighter.cspl"
 
-(lambda (url verb post)
+(lambda (url verb post headers)
 	(respond
 		(render-template-file "templates/base.template.html" (
 			("title" . "What is Packet?")
 			("body" . (render-template-file "templates/what-is-packet.template.html" (
 				("example" . (highlight (file-get-text "_example_dynamic_page.txt")))
-				("self" . (highlight (file-get-text "what-is-packet.csp")))))))) 200 "text/html")) 
+				("self" . (highlight (file-get-text "what-is-packet.csp")))))))) 200 "text/html" ())) 

@@ -805,7 +805,7 @@
 				<td>the string to parse</td>
 			</tr>
 		</table>
-		<h3>templating.cspl</h3><p>The <code>templating.cspl</code> library contains functions for working with documenttemplates. Especially useful in web programming.</p>
+		<h3>templating.cspl</h3><p>The <code>templating.cspl</code> library contains functions for working with document templates. Especially useful in web programming.</p>
 		<h4>render-template</h4><p>Substitutes a set of bracketed ({}) bindings in a document.</p>
 		<table class="table table-striped">
 			<tr>
@@ -856,6 +856,51 @@
 					<code>bindings</code>
 				</td>
 				<td>the data bindings for the document</td>
+			</tr>
+		</table>
+		<h3>web.cspl</h3><p>The <code>web.cspl</code> library contains functions for working with web requests/responses. Especially useful in web programming.</p>
+		<h4>respond</h4><p>Passes back a response list structure designed for the Packet webserver.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>string</code>
+				</td>
+				<td>
+					<code>content</code>
+				</td>
+				<td>the response content (body)</td>
+			</tr>
+			<tr>
+				<td>
+					<code>num</code>
+				</td>
+				<td>
+					<code>status</code>
+				</td>
+				<td>the response status code</td>
+			</tr>
+			<tr>
+				<td>
+					<code>string</code>
+				</td>
+				<td>
+					<code>mime</code>
+				</td>
+				<td>the MIME type (content-type) of the response</td>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>headers</code>
+				</td>
+				<td>any headers to include in the response</td>
 			</tr>
 		</table><p>Can't find anything that does what you need? It's easy to <a href="extending.csp">extend the language</a>!</p><p class="text-right">
 			<a href="extending.csp" class="btn btn-link">Extending Crisp &gt;&gt;</a>

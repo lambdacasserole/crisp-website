@@ -6,9 +6,9 @@
 
 #require "~/public-www/highlighter.cspl"
 
-(lambda (url verb post)
+(lambda (url verb post headers)
 	(respond
 		(render-template-file "templates/base.template.html" (
 			("title" . "Getting Started")
 			("body" . (render-template-file "templates/getting-started.template.html" (
-				("code" . (highlight (file-get-text "getting-started.txt")))))))) 200 "text/html")) 
+				("code" . (highlight (file-get-text "getting-started.txt")))))))) 200 "text/html" ())) 

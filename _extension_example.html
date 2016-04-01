@@ -1,0 +1,35 @@
+<pre><span style="color:#800000; font-weight:bold;">using</span> System<span style="color:#808030;">.</span>Linq<span style="color:#800080;">;</span>
+
+<span style="color:#800000; font-weight:bold;">using</span> Crisp<span style="color:#808030;">.</span>Core<span style="color:#800080;">;</span>
+<span style="color:#800000; font-weight:bold;">using</span> Crisp<span style="color:#808030;">.</span>Core<span style="color:#808030;">.</span>Evaluation<span style="color:#800080;">;</span>
+<span style="color:#800000; font-weight:bold;">using</span> Crisp<span style="color:#808030;">.</span>Core<span style="color:#808030;">.</span>Types<span style="color:#800080;">;</span>
+
+<span style="color:#800000; font-weight:bold;">namespace</span> Crisp<span style="color:#808030;">.</span>Basic
+<span style="color:#800080;">{</span>
+    <span style="color:#696969;">/// &lt;summary></span>
+    <span style="color:#696969;">/// Adds two numeric atoms together and returns the result as a new numeric atom.</span>
+    <span style="color:#696969;">/// &lt;/summary></span>
+    <span style="color:#800000; font-weight:bold;">public</span> <span style="color:#800000; font-weight:bold;">class</span> AddSpecialForm <span style="color:#808030;">:</span> SpecialForm
+    <span style="color:#800080;">{</span>
+        <span style="color:#800000; font-weight:bold;">public</span> <span style="color:#800000; font-weight:bold;">override</span> <span style="color:#800000; font-weight:bold;">string</span> Name <span style="color:#808030;">=</span><span style="color:#808030;">></span> <span style="color:#800000;">"</span><span style="color:#0000e6;">add</span><span style="color:#800000;">"</span><span style="color:#800080;">;</span>
+
+        <span style="color:#800000; font-weight:bold;">public</span> <span style="color:#800000; font-weight:bold;">override</span> SymbolicExpression Apply<span style="color:#808030;">(</span>SymbolicExpression expression<span style="color:#808030;">,</span> IEvaluator evaluator<span style="color:#808030;">)</span>
+        <span style="color:#800080;">{</span>
+            expression<span style="color:#808030;">.</span>ThrowIfNotList<span style="color:#808030;">(</span>Name<span style="color:#808030;">)</span><span style="color:#800080;">;</span> <span style="color:#696969;">// Takes a list of arguments.</span>
+
+            <span style="color:#800000; font-weight:bold;">var</span> arguments <span style="color:#808030;">=</span> expression<span style="color:#808030;">.</span>AsPair<span style="color:#808030;">(</span><span style="color:#808030;">)</span><span style="color:#808030;">.</span>Expand<span style="color:#808030;">(</span><span style="color:#808030;">)</span><span style="color:#800080;">;</span>
+            arguments<span style="color:#808030;">.</span>ThrowIfWrongLength<span style="color:#808030;">(</span>Name<span style="color:#808030;">,</span> <span style="color:#008c00;">2</span><span style="color:#808030;">)</span><span style="color:#800080;">;</span> <span style="color:#696969;">// Must have two arguments.</span>
+
+            <span style="color:#696969;">// Attempt to evaluate every argument to a number.</span>
+            <span style="color:#800000; font-weight:bold;">var</span> evaluated <span style="color:#808030;">=</span> arguments<span style="color:#808030;">.</span>Select<span style="color:#808030;">(</span>evaluator<span style="color:#808030;">.</span>Evaluate<span style="color:#808030;">)</span><span style="color:#808030;">.</span>ToArray<span style="color:#808030;">(</span><span style="color:#808030;">)</span><span style="color:#800080;">;</span>
+            <span style="color:#800000; font-weight:bold;">if</span> <span style="color:#808030;">(</span>evaluated<span style="color:#808030;">.</span>Any<span style="color:#808030;">(</span>e <span style="color:#808030;">=</span><span style="color:#808030;">></span> e<span style="color:#808030;">.</span>Type <span style="color:#808030;">!</span><span style="color:#808030;">=</span> SymbolicExpressionType<span style="color:#808030;">.</span>Numeric<span style="color:#808030;">)</span><span style="color:#808030;">)</span>
+            <span style="color:#800080;">{</span>
+                <span style="color:#800000; font-weight:bold;">throw</span> <span style="color:#800000; font-weight:bold;">new</span> RuntimeException<span style="color:#808030;">(</span>
+                    $<span style="color:#800000;">"</span><span style="color:#0000e6;">The arguments to the function"{Name}" must all evaluate to the numeric type.</span><span style="color:#800000;">"</span><span style="color:#808030;">)</span><span style="color:#800080;">;</span>
+            <span style="color:#800080;">}</span>
+
+            <span style="color:#800000; font-weight:bold;">return</span> <span style="color:#800000; font-weight:bold;">new</span> NumericAtom<span style="color:#808030;">(</span>evaluated<span style="color:#808030;">[</span><span style="color:#008c00;">0</span><span style="color:#808030;">]</span><span style="color:#808030;">.</span>AsNumeric<span style="color:#808030;">(</span><span style="color:#808030;">)</span><span style="color:#808030;">.</span>Value <span style="color:#808030;">+</span> evaluated<span style="color:#808030;">[</span><span style="color:#008c00;">1</span><span style="color:#808030;">]</span><span style="color:#808030;">.</span>AsNumeric<span style="color:#808030;">(</span><span style="color:#808030;">)</span><span style="color:#808030;">.</span>Value<span style="color:#808030;">)</span><span style="color:#800080;">;</span>
+        <span style="color:#800080;">}</span>
+    <span style="color:#800080;">}</span>
+<span style="color:#800080;">}</span>
+</pre>

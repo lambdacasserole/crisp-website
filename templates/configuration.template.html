@@ -1,0 +1,73 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>Configuring Packet</h1>
+		<p>
+			To keep your website as safe and secure as possible, you'll want to be familiar with how to properly 
+			configure Packet for your needs. The <code>packet.exe</code> executable reads its configuration from the
+			<code>packet.json</code> file in the same directory. The fields within this file are as follows:
+		</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td><code>SpecialFormDirectory</code></td>
+				<td><code>string</code></td>
+				<td>
+					The folder path (relative to the <code>packet.exe</code> binary) to load special form binaries from.
+				</td>
+			</tr>
+			<tr>
+				<td><code>CrispFileExtensions</code></td>
+				<td><code>IEnumerable&lt;string&gt;</code></td>
+				<td>
+					A list of file extensions that should be interpreted as Crisp dynamic pages and not served directly.
+				</td>
+			</tr>
+			<tr>
+				<td><code>InternalServerErrorPage</code></td>
+				<td><code>string</code></td>
+				<td>
+					The file path (relative to the <code>packet.exe</code> binary) of the page to serve to the client
+					in the event of a 500 internal server error.
+				</td>
+			</tr>
+			<tr>
+				<td><code>NotFoundErrorPage</code></td>
+				<td><code>string</code></td>
+				<td>
+					The file path (relative to the <code>packet.exe</code> binary) of the page to serve to the client
+					in the event of a 404 not found error.
+				</td>
+			</tr>
+			<tr>
+				<td><code>DirectoryIndices</code></td>
+				<td><code>IEnumerable&lt;string&gt;</code></td>
+				<td>
+					A list of filenames to serve as directory index (default) files, if present.
+				</td>
+			</tr>
+			<tr>
+				<td><code>DoNotServePatterns</code></td>
+				<td><code>IEnumerable&lt;string&gt;</code></td>
+				<td>
+					A list of regular expressions. Any requests for files matching these regular expressions will 
+					be served with a 403 forbidden page instead. 
+				</td>
+			</tr>
+			<tr>
+				<td><code>MimeTypeMappings</code></td>
+				<td><code>Dictionary&lt;string, string&gt;</code></td>
+				<td>
+					A map from file extensions to the MIME types they should be served with. 
+				</td>
+			</tr>
+		</table>
+		<p>
+			Remember, Crisp/Packet is still in pre-alpha is isn't fully tested or secure! Develop cool stuff, but please
+			be sensible.
+		</p>
+	</div>
+</div>

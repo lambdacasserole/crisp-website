@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>Extending Crisp</h1>
+		<p>
+			If you can program in C# or VB.NET, you can write your own special forms to expose new 
+			functionality for your Crisp programs to take advantage of! For example, you might
+			create a <code>send-email</code> special form to power your website contact form.
+		<p>
+		<p>
+			Take a look at the following C# source code for the <code>add</code> special form:
+		</p>
+		{example}
+		<p>
+			Creating a new special form really this simple:
+		</p>
+		<ul>
+			<li>Open Visual Studio, start a new class library project.</li>
+			<li>Add a reference to the Crisp.Core assembly</li>
+			<li>Add a new class, make sure your class inherits from <code>Crisp.Core.Types.SpecialForm</code> as its direct parent class.
+			<li>Name your special form, The value of the <code>name</code> property determines the name used to call your special form from your Crisp source code.</li>
+			<li>Create your <code>Apply</code> method. The arguments are passed into the first parameter of the <code>Apply</code> method from the executing Crisp code, and from there it's up to you what you do with them!</li>
+			<li>Compile your class library and add it to the folder named <code>native</code> in the same directory as the <code>crisp.exe</code> or <code>packet.exe</code> executables.</li>
+			<li>Use your new special form from your Crisp code!</li>
+		</ul>
+		<p>
+			If you want to use Crisp to program for the web, it's worth checking out <a href="what-is-packet.csp">the Packet webserver</a> which is specifically
+			designed to serve dynamic webpages generated in Crisp!
+		</p>
+		<p class="text-right">
+			<a href="what-is-packet.csp">The Packet Webserver &gt;&gt;</a>
+		</p>
+	</div>
+</div>

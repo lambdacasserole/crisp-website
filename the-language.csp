@@ -1,4 +1,4 @@
-﻿;; Crisp "Language" page.
+﻿;; Crisp 'The Language' page.
 ;; Copyright © Saul Johnson 2015-2016
 
 #require "~/lib/web.cspl"
@@ -10,7 +10,7 @@
 	(respond
 		(render-template-file "templates/base.template.html" (
 			("title" . "The Language")
-			("body" . (render-template-file "templates/language.template.html" (
+			("body" . (render-template-file "templates/the-language.template.html" (
 				("code" . (highlight (file-get-text "lazy.txt")))
 				("code_2" . (highlight (file-get-text "lazy_2.txt")))
 				("code_3" . (highlight (file-get-text "binding.txt")))))))) 200 "text/html"))

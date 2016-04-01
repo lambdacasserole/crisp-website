@@ -1,0 +1,50 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>What is Packet?</h1>
+		<p>
+			Packet is HTTP server software designed to serve dynamic webpages generated <a href="what-is-crisp.csp">in Crisp</a>. 
+			As a matter of fact, Crisp/Packet is powering this website right now!
+		</p>
+		<p>
+			The Packet executable <code>packet.exe</code> is bundled alongside the Crisp interpreter. By default, it 
+			is configured to serve files stored in the <code>public-www</code> directory in the same folder. Any folders
+			with a <code>*.csp</code> file extension will be served as dynamic webpages.
+		</p>
+		<p>
+			Dynamic webpages are Crisp programs with the general format:
+		</p>	
+		<pre>{example}</pre>
+		<p>
+			Packet will pass the parameters in to the program when the page is requested:
+		</p>
+		<ul>
+			<li><code>url</code> - The URL of the requested page.</li>
+			<li><code>verb</code> - The HTTP verb present in the request, for example "GET" or "POST".</li>
+			<li><code>post</code> - If the request is a POST request, this will contain the request body URL-encoded.</li>
+		</ul>
+		<p>
+			The program is expected to evaluate to a proper list of the form:
+		</p>
+		<pre>(content . (status . (mime . nil)))</pre>
+		<p>
+			These form the response that will be returned to the client requesting the page:
+		</p>
+		<ul>
+			<li><code>content</code> - The body of the response, represented a string.</li>
+			<li><code>status</code> - The numeric status code of the response.</li>
+			<li><code>mime</code> - The MIME type to specify in the response, will be <code>text/html</code> for HTML pages.</li>
+		</ul>
+		<p>
+			The <code>respond</code> method provides a convenient way to pass a response object back as a result of the
+			function. For instance, the code that powers this webpage consists of the following:
+		</p>
+		<pre>{self}</pre>
+		<p>
+			Before you get started with Packet, you should learn <a href="configuration.csp">how to configure it</a> to 
+			best suit your needs! 
+		</p>
+		<p class="text-right">
+			<a href="configuration.csp" class="btn btn-link">Configuration &gt;&gt;</a>
+		</p>
+	</div>
+</div>

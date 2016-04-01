@@ -1,4 +1,4 @@
-;; Crisp "Language" page.
+﻿;; Crisp 'What is Crisp?' page.
 ;; Copyright © Saul Johnson 2015-2016
 
 #require "~/lib/web.cspl"
@@ -9,6 +9,6 @@
 (lambda (url verb post)
 	(respond
 		(render-template-file "templates/base.template.html" (
-			("title" . "Getting Started")
-			("body" . (render-template-file "templates/gettingstarted.template.html" (
-				("code" . (highlight (file-get-text "gettingstarted.txt")))))))) 200 "text/html")) 
+			("title" . "What is Crisp?")
+			("body" . (render-template-file "templates/what-is-crisp.template.html" (
+				("code" . (highlight (file-get-text "foobar.txt")))))))) 200 "text/html"))

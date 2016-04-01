@@ -1,24 +1,9 @@
 <div class="row">
 	<div class="col-md-12">
 		<h1>API Documentation</h1>
-		<p>
-			This page is intended as a reference for new Crisp programmers to help them become familiar
-			with the language's core features. As the size of the Crisp standard library grows, so will this
-			page!
-		<p>
-		<h2>Special Forms</h2>
-		<p>
-			Special forms are functions written in a .NET language (usually C# or VB.NET) that form the backbone
-			of Crisp, exposing special functionality. To read more about how special forms are created and structured,
-			check out the page on <a href="extending.csp">extending the language</a>. A few binaries containing special
-			forms core to Crisp's functionality are included by default and documented below (grouped by assembly).
-		</p>
-		<h3>Crisp.Basic</h3>
-		<p>
-			The <code>Crisp.Basic.dll</code> assembly contains the bare-bones core special forms that give Crisp its
-			basic functionality. In here, you'll find the special forms that give Crisp basic
-			<a href="https://en.wikipedia.org/wiki/Lispkit_Lisp" target="_blank">Lispkit Lisp</a> functionality.
-		</p>
+		<p>This page is intended as a reference for new Crisp programmers to help them become familiar with the language's core features. As the size of the Crisp standard library grows, so will this page!</p>
+		<h2>Special Forms</h2><p>Special forms are functions written in a .NET language (usually C# or VB.NET) that form the backbone of Crisp, exposing special functionality. To read more about how special forms are created and structured, check out the page on <a href="extending.csp">extending the language</a>. A few binaries containing special forms core to Crisp's functionality are included by default and documented below (grouped by assembly).</p>
+		<h3>Crisp.Basic</h3><p>The <code>Crisp.Basic.dll</code> assembly contains the bare-bones core special forms that give Crisp its basic functionality. In here, you'll find the special forms that give Crisp basic <a href="https://en.wikipedia.org/wiki/Lispkit_Lisp" target="_blank"> Lispkit Lisp</a> functionality.</p>
 		<table class="table table-striped">
 			<tr>
 				<th>Name</th>
@@ -27,156 +12,224 @@
 				<th>Description</th>
 			</tr>
 			<tr>
-				<td><code>add</code></td>
-				<td><code>(add 4 8)</code></td>
-				<td><code>12</code></td>
 				<td>
-					Adds two numeric atoms together and returns the result as a new numeric atom.
+					<code>add</code>
+				</td>
+				<td>
+					<code>(add 4 8)</code>
+				</td>
+				<td>
+					<code>12</code>
+				</td>
+				<td>Adds two numeric atoms together and returns the result as a new numeric atom.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>atom</code>
+				</td>
+				<td>
+					<code>(atom "strings are atoms")</code>
+				</td>
+				<td>
+					<code>true</code>
+				</td>
+				<td>Returns a true boolean atom if the given expression evaluates to an atom. Otherwise returns a false boolean atom.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>car</code>
+				</td>
+				<td>
+					<code>(car (cons 5 4))</code>
+				</td>
+				<td>
+					<code>5</code>
+				</td>
+				<td>Returns the head (first) of a cons cell (pair).</td>
+			</tr>
+			<tr>
+				<td>
+					<code>cdr</code>
+				</td>
+				<td>
+					<code>(cdr (cons 5 4))</code>
+				</td>
+				<td>
+					<code>4</code>
+				</td>
+				<td>Returns the tail (rest) of a cons cell (pair).</td>
+			</tr>
+			<tr>
+				<td>
+					<code>cons</code>
+				</td>
+				<td>
+					<code>(cons 9 8)</code>
+				</td>
+				<td>
+					<code>(9 . 8)</code>
+				</td>
+				<td>Returns a cons cell (pair) containing as its head and tail the two expressions given.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>div</code>
+				</td>
+				<td>
+					<code>(div 12 6)</code>
+				</td>
+				<td>
+					<code>2</code>
+				</td>
+				<td>Divides a numeric atom by another and returns the result as a new numeric atom.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>eq</code>
+				</td>
+				<td>
+					<code>(eq 12 (add 6 6))</code>
+				</td>
+				<td>
+					<code>true</code>
+				</td>
+				<td>Returns a true boolean atom if the two given arguments are considered equal. Otherwise returns a false boolean atom.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>if</code>
+				</td>
+				<td>
+					<code>(if (eq 12 (add 6 6)) "foo" "bar")</code>
+				</td>
+				<td>
+					<code>"foo"</code>
+				</td>
+				<td>A function that returns its second parameter if its first parameter evaluates to a true boolean atom. Otherwise returns its third parameter.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>lambda</code>
+				</td>
+				<td>
+					<code>(lambda (x) (add x 1))</code>
+				</td>
+				<td>
+					<code>&lambda;-expression</code>
+				</td>
+				<td>Returns a callable function (closure) with the specified parameters and body.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>leq</code>
+				</td>
+				<td>
+					<code>(leq 4 6)</code>
+				</td>
+				<td>
+					<code>true</code>
+				</td>
+				<td>Returns a true boolean atom if the first argument evaluates to less than or equal to the second argument. Otherwise returns a false boolean atom.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>letrec</code>
+				</td>
+				<td>
+					<code>(letrec (add x y) (x . 10) (y . (add x 5)))</code>
+				</td>
+				<td>
+					<code>25</code>
+				</td>
+				<td>A function that binds symbols to expressions, allowing for recursion.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>let</code>
+				</td>
+				<td>
+					<code>(let (add x y) (x . 10) (y . 5))</code>
+				</td>
+				<td>
+					<code>15</code>
+				</td>
+				<td>A function that binds symbols to expressions.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>(list 1 2 3)</code>
+				</td>
+				<td>
+					<code>(1 . (2 . (3 . nil)))</code>
+				</td>
+				<td>A function that returns its arguments as a proper list.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>mul</code>
+				</td>
+				<td>
+					<code>(mul 6 10)</code>
+				</td>
+				<td>
+					<code>60</code>
+				</td>
+				<td>Multiplies a numeric atom by another and returns the result as a new numeric atom.</td>
+			</tr>
+			<tr>
+				<td>
+					<code>prog</code>
+				</td>
+				<td>
+					<code>(prog (file-set-text "C:\foo.txt" "bar") (sub 10 5))</code>
+				</td>
+				<td>
+					<code>5</code>
+				</td>
+				<td>A function that sequentially evaluates its arguments, returning the result of evaluation of its last argument. <i>Useful for programming with side-effects.</i>
 				</td>
 			</tr>
 			<tr>
-				<td><code>atom</code></td>
-				<td><code>(atom "strings are atoms")</code></td>
-				<td><code>true</code></td>
 				<td>
-					Returns a true boolean atom if the given expression evaluates to an atom. Otherwise returns a false boolean atom.
+					<code>quote</code>
 				</td>
+				<td>
+					<code>(quote foo)</code>
+				</td>
+				<td>
+					<code>foo</code>
+				</td>
+				<td>A function that will convert all symbols in an expression to constants.</td>
 			</tr>
 			<tr>
-				<td><code>car</code></td>
-				<td><code>(car (cons 5 4))</code></td>
-				<td><code>5</code></td>
 				<td>
-					Returns the head (first) of a cons cell (pair).
+					<code>rem</code>
 				</td>
+				<td>
+					<code>(rem 10 3)</code>
+				</td>
+				<td>
+					<code>1</code>
+				</td>
+				<td>Divides a numeric atom by another and returns the remainder as a new numeric atom.</td>
 			</tr>
 			<tr>
-				<td><code>cdr</code></td>
-				<td><code>(cdr (cons 5 4))</code></td>
-				<td><code>4</code></td>
 				<td>
-					Returns the tail (rest) of a cons cell (pair).
+					<code>sub</code>
 				</td>
-			</tr>
-			<tr>
-				<td><code>cons</code></td>
-				<td><code>(cons 9 8)</code></td>
-				<td><code>(9 . 8)</code></td>
 				<td>
-					Returns a cons cell (pair) containing as its head and tail the two expressions given.
+					<code>(sub 10 3)</code>
 				</td>
-			</tr>
-			<tr>
-				<td><code>div</code></td>
-				<td><code>(div 12 6)</code></td>
-				<td><code>2</code></td>
 				<td>
-					Divides a numeric atom by another and returns the result as a new numeric atom.
+					<code>7</code>
 				</td>
-			</tr>
-			<tr>
-				<td><code>eq</code></td>
-				<td><code>(eq 12 (add 6 6))</code></td>
-				<td><code>true</code></td>
-				<td>
-					Returns a true boolean atom if the two given arguments are considered equal. Otherwise returns a false boolean atom.
-				</td>
-			</tr>
-			<tr>
-				<td><code>if</code></td>
-				<td><code>(if (eq 12 (add 6 6)) "foo" "bar")</code></td>
-				<td><code>"foo"</code></td>
-				<td>
-					A function that returns its second parameter if its first parameter evaluates to a true boolean atom. Otherwise returns its third parameter.
-				</td>
-			</tr>
-			<tr>
-				<td><code>lambda</code></td>
-				<td><code>(lambda (x) (add x 1))</code></td>
-				<td><code>&lambda;-expression</code></td>
-				<td>
-					Returns a callable function (closure) with the specified parameters and body.
-				</td>
-			</tr>
-			<tr>
-				<td><code>leq</code></td>
-				<td><code>(leq 4 6)</code></td>
-				<td><code>true</code></td>
-				<td>
-					Returns a true boolean atom if the first argument evaluates to less than or equal to the second argument. Otherwise returns a false boolean atom.
-				</td>
-			</tr>
-			<tr>
-				<td><code>letrec</code></td>
-				<td><code>(letrec (add x y) (x . 10) (y . (add x 5)))</code></td>
-				<td><code>25</code></td>
-				<td>
-					A function that binds symbols to expressions, allowing for recursion.
-				</td>
-			</tr>
-			<tr>
-				<td><code>let</code></td>
-				<td><code>(let (add x y) (x . 10) (y . 5))</code></td>
-				<td><code>15</code></td>
-				<td>
-					A function that binds symbols to expressions.
-				</td>
-			</tr>
-			<tr>
-				<td><code>list</code></td>
-				<td><code>(list 1 2 3)</code></td>
-				<td><code>(1 . (2 . (3 . nil)))</code></td>
-				<td>
-					A function that returns its arguments as a proper list.
-				</td>
-			</tr>
-			<tr>
-				<td><code>mul</code></td>
-				<td><code>(mul 6 10)</code></td>
-				<td><code>60</code></td>
-				<td>
-					Multiplies a numeric atom by another and returns the result as a new numeric atom.
-				</td>
-			</tr>
-			<tr>
-				<td><code>prog</code></td>
-				<td><code>(prog (file-set-text "C:\foo.txt" "bar") (sub 10 5))</code></td>
-				<td><code>5</code></td>
-				<td>
-					A function that sequentially evaluates its arguments, returning the result of evaluation of its last argument. <i>Useful for programming with side-effects.</i>
-				</td>
-			</tr>
-			<tr>
-				<td><code>quote</code></td>
-				<td><code>(quote foo)</code></td>
-				<td><code>foo</code></td>
-				<td>
-					A function that will convert all symbols in an expression to constants.
-				</td>
-			</tr>
-			<tr>
-				<td><code>rem</code></td>
-				<td><code>(rem 10 3)</code></td>
-				<td><code>1</code></td>
-				<td>
-					Divides a numeric atom by another and returns the remainder as a new numeric atom.
-				</td>
-			</tr>
-			<tr>
-				<td><code>sub</code></td>
-				<td><code>(sub 10 3)</code></td>
-				<td><code>7</code></td>
-				<td>
-					Subtracts a numeric atom from another and returns the result as a new numeric atom.
-				</td>
+				<td>Subtracts a numeric atom from another and returns the result as a new numeric atom.</td>
 			</tr>
 		</table>
-		<h3>Crisp.Data</h3>
-		<p>
-			The <code>Crisp.Data.dll</code> assembly contains special forms designed to work with the bundled
-			100% managed port of the SQLite serverless, zero-config database engine. This assembly is currently
-			very minimal, but should be sufficient for most database tasks.
-		</p>
+		<h3>Crisp.Data</h3><p>The <code>Crisp.Data.dll</code> assembly contains special forms designed to work with the bundled 100% managed port of the SQLite serverless, zero-config database engine. This assembly is currently very minimal, but should be sufficient for most database tasks.</p>
 		<table class="table table-striped">
 			<tr>
 				<th>Name</th>
@@ -185,27 +238,31 @@
 				<th>Description</th>
 			</tr>
 			<tr>
-				<td><code>data-non-query</code></td>
-				<td><code>(data-non-query "data.db3" "INSERT INTO Employees (name, age) VALUES ('Fred', 25)")</code></td>
-				<td><code>1</code></td>
 				<td>
-					Executes an SQLite non-query against a database file, returning the number of affected rows.
+					<code>data-non-query</code>
 				</td>
+				<td>
+					<code>(data-non-query "data.db3" "INSERT INTO Employees (name, age) VALUES ('Fred', 25)")</code>
+				</td>
+				<td>
+					<code>1</code>
+				</td>
+				<td>Executes an SQLite non-query against a database file, returning the number of affected rows.</td>
 			</tr>
 			<tr>
-				<td><code>data-query</code></td>
-				<td><code>(data-query "data.db3" "SELECT * FROM Employees")</code></td>
-				<td><code>((("name" . "Fred") . (("age" . "25") . nil)) . nil)</code></td>
 				<td>
-					Executes an SQLite query against a database file, returning a set of name-value collections representing rows retrieved.
+					<code>data-query</code>
 				</td>
+				<td>
+					<code>(data-query "data.db3" "SELECT * FROM Employees")</code>
+				</td>
+				<td>
+					<code>((("name" . "Fred") . (("age" . "25") . nil)) . nil)</code>
+				</td>
+				<td>Executes an SQLite query against a database file, returning a set of name-value collections representing rows retrieved.</td>
 			</tr>
 		</table>
-		<h3>Crisp.IO</h3>
-		<p>
-			The <code>Crisp.IO.dll</code> assembly contains special forms designed to work with the file system. For example,
-			reading and writing text files and checking whether or not directories/files exist on-disk.
-		</p>
+		<h3>Crisp.IO</h3><p>The <code>Crisp.IO.dll</code> assembly contains special forms designed to work with the file system. For example, reading and writing text files and checking whether or not directories/files exist on-disk.</p>
 		<table class="table table-striped">
 			<tr>
 				<th>Name</th>
@@ -214,43 +271,55 @@
 				<th>Description</th>
 			</tr>
 			<tr>
-				<td><code>directory-exists</code></td>
-				<td><code>(directory-exists "C:\this_folder_exists")</code></td>
-				<td><code>true</code></td>
 				<td>
-					Returns a true boolean atom if a directory exists at the specified path. Otherwise returns a false boolean atom.
+					<code>directory-exists</code>
 				</td>
+				<td>
+					<code>(directory-exists "C:\this_folder_exists")</code>
+				</td>
+				<td>
+					<code>true</code>
+				</td>
+				<td>Returns a true boolean atom if a directory exists at the specified path. Otherwise returns a false boolean atom.</td>
 			</tr>
 			<tr>
-				<td><code>file-exists</code></td>
-				<td><code>(file-exists "C:\this_file_exists.txt")</code></td>
-				<td><code>true</code></td>
 				<td>
-					Returns a true boolean atom if a file exists at the specified path. Otherwise returns a false boolean atom.
+					<code>file-exists</code>
 				</td>
+				<td>
+					<code>(file-exists "C:\this_file_exists.txt")</code>
+				</td>
+				<td>
+					<code>true</code>
+				</td>
+				<td>Returns a true boolean atom if a file exists at the specified path. Otherwise returns a false boolean atom.</td>
 			</tr>
 			<tr>
-				<td><code>file-get-text</code></td>
-				<td><code>(file-get-text "C:\hello_world.txt")</code></td>
-				<td><code>"Hello world!"</code></td>
 				<td>
-					Reads all text from a file and returns it as a string atom.
+					<code>file-get-text</code>
 				</td>
+				<td>
+					<code>(file-get-text "C:\hello_world.txt")</code>
+				</td>
+				<td>
+					<code>"Hello world!"</code>
+				</td>
+				<td>Reads all text from a file and returns it as a string atom.</td>
 			</tr>
 			<tr>
-				<td><code>file-set-text</code></td>
-				<td><code>(file-set-text "C:\foo_bar.txt" "foobar")</code></td>
-				<td><code>true</code></td>
 				<td>
-					Writes the given text to the file at the specified path and returns a true boolean atom on success. On failure returns a false boolean atom.
+					<code>file-set-text</code>
 				</td>
+				<td>
+					<code>(file-set-text "C:\foo_bar.txt" "foobar")</code>
+				</td>
+				<td>
+					<code>true</code>
+				</td>
+				<td>Writes the given text to the file at the specified path and returns a true boolean atom on success. On failure returns a false boolean atom.</td>
 			</tr>
 		</table>
-		<h3>Crisp.String</h3>
-		<p>
-			The <code>Crisp.String.dll</code> assembly contains special forms designed for string manipulation. This is currently far from a comprehensive set 
-			of string manipulation functions but will suffice for many use-cases.
-		</p>
+		<h3>Crisp.String</h3><p>The <code>Crisp.String.dll</code> assembly contains special forms designed for string manipulation. This is currently far from a comprehensive set of string manipulation functions but will suffice for many use-cases.</p>
 		<table class="table table-striped">
 			<tr>
 				<th>Name</th>
@@ -259,78 +328,537 @@
 				<th>Description</th>
 			</tr>
 			<tr>
-				<td><code>chr</code></td>
-				<td><code>(chr 65)</code></td>
-				<td><code>"A"</code></td>
 				<td>
-					A function that converts from a numeric ASCII code to its character equivalent.
+					<code>chr</code>
 				</td>
+				<td>
+					<code>(chr 65)</code>
+				</td>
+				<td>
+					<code>"A"</code>
+				</td>
+				<td>A function that converts from a numeric ASCII code to its character equivalent.</td>
 			</tr>
 			<tr>
-				<td><code>concat</code></td>
-				<td><code>(concat "he" "llo")</code></td>
-				<td><code>"hello"</code></td>
 				<td>
-					Returns a new string atom consisting of two string atoms concatenated together.
+					<code>concat</code>
 				</td>
+				<td>
+					<code>(concat "he" "llo")</code>
+				</td>
+				<td>
+					<code>"hello"</code>
+				</td>
+				<td>Returns a new string atom consisting of two string atoms concatenated together.</td>
 			</tr>
 			<tr>
-				<td><code>html-decode</code></td>
-				<td><code>(html-decode "&amp;lt;hr&amp;gt;")</code></td>
-				<td><code>"&lt;hr&gt;"</code></td>
 				<td>
-					HTML-decodes a string atom and returns the result.
+					<code>html-decode</code>
 				</td>
+				<td>
+					<code>(html-decode "&amp;lt;hr&amp;gt;")</code>
+				</td>
+				<td>
+					<code>"&lt;hr&gt;"</code>
+				</td>
+				<td>HTML-decodes a string atom and returns the result.</td>
 			</tr>
 			<tr>
-				<td><code>html-encode</code></td>
-				<td><code>(html-encode "&lt;hr&gt;")</code></td>
-				<td><code>"&amp;lt;hr&amp;gt;"</code></td>
 				<td>
-					HTML-encodes a string atom and returns the result.
+					<code>html-encode</code>
 				</td>
+				<td>
+					<code>(html-encode "&lt;hr&gt;")</code>
+				</td>
+				<td>
+					<code>"&amp;lt;hr&amp;gt;"</code>
+				</td>
+				<td>HTML-encodes a string atom and returns the result.</td>
 			</tr>
 			<tr>
-				<td><code>regex-replace</code></td>
-				<td><code>(regex-replace "0f37d6" "[0-9]" "#")</code></td>
-				<td><code>"#f##d#"</code></td>
 				<td>
-					Returns a string atom consisting of the first argument passed to this function with all matches to the regular expression specified as the second argument replaced with the string passed as the third argument.
+					<code>regex-replace</code>
 				</td>
+				<td>
+					<code>(regex-replace "0f37d6" "[0-9]" "#")</code>
+				</td>
+				<td>
+					<code>"#f##d#"</code>
+				</td>
+				<td>Returns a string atom consisting of the first argument passed to this function with all matches to the regular expression specified as the second argument replaced with the string passed as the third argument.</td>
 			</tr>
 			<tr>
-				<td><code>replace</code></td>
-				<td><code>(regex-replace "hyphenated-string" "-" " ")</code></td>
-				<td><code>"hyphenated string"</code></td>
 				<td>
-					Returns a string atom consisting of the first argument passed to this function with all occurrences of the string specified as the second argument replaced with the string passed as the third argument.
+					<code>replace</code>
 				</td>
+				<td>
+					<code>(regex-replace "hyphenated-string" "-" " ")</code>
+				</td>
+				<td>
+					<code>"hyphenated string"</code>
+				</td>
+				<td>Returns a string atom consisting of the first argument passed to this function with all occurrences of the string specified as the second argument replaced with the string passed as the third argument.</td>
 			</tr>
 			<tr>
-				<td><code>split</code></td>
-				<td><code>(split "10.11.12" ".")</code></td>
-				<td><code>("10" . ("11" . ("12" . nil)))</code></td>
 				<td>
-					Returns a list of substrings created by splitting a string along a delimiter.
+					<code>split</code>
 				</td>
+				<td>
+					<code>(split "10.11.12" ".")</code>
+				</td>
+				<td>
+					<code>("10" . ("11" . ("12" . nil)))</code>
+				</td>
+				<td>Returns a list of substrings created by splitting a string along a delimiter.</td>
 			</tr>
 			<tr>
-				<td><code>url-decode</code></td>
-				<td><code>(url-decode "hello%3dworld%26+foo%2fbar")</code></td>
-				<td><code>"hello=world& foo/bar"</code></td>
 				<td>
-					URL-decodes a string atom and returns the result.
+					<code>url-decode</code>
 				</td>
+				<td>
+					<code>(url-decode "hello%3dworld%26+foo%2fbar")</code>
+				</td>
+				<td>
+					<code>"hello=world& foo/bar"</code>
+				</td>
+				<td>URL-decodes a string atom and returns the result.</td>
 			</tr>
 			<tr>
-				<td><code>url-encode</code></td>
-				<td><code>(url-encode "hello=world&amp; foo/bar")</code></td>
-				<td><code>"hello%3dworld%26+foo%2fbar"</code></td>
 				<td>
-					URL-encodes a string atom and returns the result.
+					<code>url-encode</code>
 				</td>
+				<td>
+					<code>(url-encode "hello=world&amp; foo/bar")</code>
+				</td>
+				<td>
+					<code>"hello%3dworld%26+foo%2fbar"</code>
+				</td>
+				<td>URL-encodes a string atom and returns the result.</td>
 			</tr>
 		</table>
+		<h2>Standard Library</h2><p>The Crisp standard library is written in Crisp and contains useful functions composedfrom the special forms defined in C#.</p>
+		<h3>core.cspl</h3><p>The <code>core.cspl</code> library contains some of the most commonly used functions inCrisp for general programming.</p>
+		<h4>last</h4><p>Returns the last element in a proper list.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>lst</code>
+				</td>
+				<td>the proper list to return the last element of</td>
+			</tr>
+		</table>
+		<h4>concat-all</h4><p>Concatenates a list of string expressions into one string expression.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>lst</code>
+				</td>
+				<td>the list of string expressions to concatenate</td>
+			</tr>
+		</table>
+		<h4>null</h4><p>Returns true if the given paramters is nil.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>any</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the expression to check</td>
+			</tr>
+		</table>
+		<h4>and</h4><p>Returns true if both parameters evaluate to true.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>bool</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the first argument</td>
+			</tr>
+			<tr>
+				<td>
+					<code>bool</code>
+				</td>
+				<td>
+					<code>y</code>
+				</td>
+				<td>the second argument</td>
+			</tr>
+		</table>
+		<h4>or</h4><p>Returns true if one or both parameters evaluate to true.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>bool</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the first argument</td>
+			</tr>
+			<tr>
+				<td>
+					<code>bool</code>
+				</td>
+				<td>
+					<code>y</code>
+				</td>
+				<td>the second argument</td>
+			</tr>
+		</table>
+		<h4>xor</h4><p>Returns true if one input (but not both inputs) evaluates to true.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>bool</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the first argument</td>
+			</tr>
+			<tr>
+				<td>
+					<code>bool</code>
+				</td>
+				<td>
+					<code>y</code>
+				</td>
+				<td>the second argument</td>
+			</tr>
+		</table>
+		<h4>append</h4><p>Appends an atom or list to another list.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>lst</code>
+				</td>
+				<td>the base list</td>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the list of atoms to append</td>
+			</tr>
+		</table>
+		<h4>reverse</h4><p>Reverses a proper list.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>lst</code>
+				</td>
+				<td>the proper list to reverse</td>
+			</tr>
+		</table>
+		<h3>math.cspl</h3><p>The <code>math.cspl</code> library contains Crisp functions that are designed for performing mathematical calculations and working with numbers.</p>
+		<h4>Constants</h4><p>This library defines the following constants:</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Name</th>
+				<th>Value</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>num</code>
+				</td>
+				<td>
+					<code>pi</code>
+				</td>
+				<td>
+					<code>3.14159265358979323846</code>
+				</td>
+				<td>The ratio of the circumference of a circle to its diameter.</td>
+			</tr>
+		</table>
+		<h4>sum</h4><p>Gives the sum total of all values in a given list.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the list of numerical values</td>
+			</tr>
+		</table>
+		<h4>factorial</h4><p>Calculates the factorial of a number.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>num</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the number to calculate the factorial of</td>
+			</tr>
+		</table>
+		<h4>pow</h4><p>Raises a number to a power.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>num</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the base number</td>
+			</tr>
+			<tr>
+				<td>
+					<code>num</code>
+				</td>
+				<td>
+					<code>e</code>
+				</td>
+				<td>the exponent</td>
+			</tr>
+		</table>
+		<h4>square</h4><p>Squares a number.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>num</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the number to square</td>
+			</tr>
+		</table>
+		<h4>cube</h4><p>Cubes a number.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>num</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the number to cube</td>
+			</tr>
+		</table>
+		<h4>abs</h4><p>Calculates the absolute value of a number.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>num</code>
+				</td>
+				<td>
+					<code>x</code>
+				</td>
+				<td>the number to calculate the absolute value of</td>
+			</tr>
+		</table>
+		<h3>nvc.cspl</h3><p>The <code>nvc.cspl</code> library contains functions for working with name-value collections.</p>
+		<h4>nvc-get</h4><p>Gets the value from a name-value collection that corresponds to the specified name.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>nvc</code>
+				</td>
+				<td>the name-value collection</td>
+			</tr>
+			<tr>
+				<td>
+					<code>string</code>
+				</td>
+				<td>
+					<code>name</code>
+				</td>
+				<td>the name to retrieve the value for</td>
+			</tr>
+		</table>
+		<h3>querystring.cspl</h3><p>The <code>querystring.cspl</code> library contains functions for working with query  strings. Especially useful in web programming.</p>
+		<h4>query-string-nvc</h4><p>Gets the value from a name-value collection that corresponds to the specified name.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>lst</code>
+				</td>
+				<td>the list to convert</td>
+			</tr>
+		</table>
+		<h4>parse-query-string</h4><p>Parses a query string.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>string</code>
+				</td>
+				<td>
+					<code>str</code>
+				</td>
+				<td>the string to parse</td>
+			</tr>
+		</table>
+		<h3>templating.cspl</h3><p>The <code>templating.cspl</code> library contains functions for working with documenttemplates. Especially useful in web programming.</p>
+		<h4>render-template</h4><p>Substitutes a set of bracketed ({}) bindings in a document.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>string</code>
+				</td>
+				<td>
+					<code>document</code>
+				</td>
+				<td>the document to perform the replace operation on</td>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>bindings</code>
+				</td>
+				<td>the data bindings for the document</td>
+			</tr>
+		</table>
+		<h4>render-template-file</h4><p>Substitutes a set of bracketed ({}) bindings in a document read from a file.</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Type</th>
+				<th>Parameter</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+					<code>string</code>
+				</td>
+				<td>
+					<code>document</code>
+				</td>
+				<td>the file path of the document to perform the replace operation on</td>
+			</tr>
+			<tr>
+				<td>
+					<code>list</code>
+				</td>
+				<td>
+					<code>bindings</code>
+				</td>
+				<td>the data bindings for the document</td>
+			</tr>
+		</table><p>Can't find anything that does what you need? It's easy to <a href="extending.csp">extend the language</a>!</p><p class="text-right">
+			<a href="extending.csp" class="btn btn-link">Extending Crisp &gt;&gt;</a>
+		</p>
 	</div>
 </div>
-

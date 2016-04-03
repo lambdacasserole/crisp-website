@@ -1,0 +1,16 @@
+﻿;; Crisp 'The Language' page.
+;; Copyright © Saul Johnson 2015-2016
+
+#require "~/lib/web.cspl"
+#require "~/lib/templating.cspl"
+
+#require "~/public-www/lib/highlighter.cspl"
+
+(lambda (url verb post headers)
+	(respond
+		(render-template-file "../base.template.html" (
+			("title" . "The Language")
+			("body" . (render-template-file "_the-language.template.html" (
+				("code" . (highlight (file-get-text "_example.template.html")))
+				("code_2" . (highlight (file-get-text "_lazy.template.html")))
+				("code_3" . (highlight (file-get-text "_binding.template.html")))))))) 200 "text/html" ()))

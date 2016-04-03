@@ -6,6 +6,6 @@
 
 (lambda (url verb post headers)
 	(respond
-		(render-template-file "templates/base.template.html" (
+		(render-template-file "../base.template.html" (
 			("title" . "API Documentation")
-			("body" . (render-template-file "templates/api.template.html" ())))) 200 "text/html" ())) 
+			("body" . (render-template-file "_api-documentation.template.html" ())))) 200 "text/html" ())) 

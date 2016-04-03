@@ -6,6 +6,6 @@
 
 (lambda (url verb post headers)
 	(respond
-		(render-template-file "templates/base.template.html" (
+		(render-template-file "../base.template.html" (
 			("title" . "Blog")
-			("body" . (render-template-file "templates/blog.template.html" ())))) 200 "text/html" ())) 
+			("body" . (render-template-file "_blog.template.html" ())))) 200 "text/html" ())) 

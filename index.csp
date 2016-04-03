@@ -8,4 +8,4 @@
 	(respond
 		(render-template-file "base.template.html" (
 			("title" . "Home")
-			("body" . (render-template-file "index.template.html" ())))) "200" "text/html" ()))
+			("body" . (render-template-file "index.template.html" ())))) 200 "text/html" ()))

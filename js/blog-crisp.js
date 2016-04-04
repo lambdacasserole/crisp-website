@@ -5,7 +5,7 @@
 
   apiKey = "AIzaSyDj73DQJINLQE5DDuvBekrqBmLUDvA0uc0";
 
-  getUrl = "https://www.googleapis.com/blogger/v3/blogs/" + blogId + "/posts?key=" + apiKey;
+  getUrl = "https://www.googleapis.com/blogger/v3/blogs/" + blogId + "/posts?max-results=500&key=" + apiKey;
 
   buildItemHtml = function(item) {
     var result;

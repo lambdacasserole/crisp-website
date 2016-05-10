@@ -1,12 +1,11 @@
 ;; Crisp 'Extending Crisp' page.
 ;; Copyright © Saul Johnson 2015-2016
 
-#require "~/lib/web.cspl"
-#require "~/lib/templating.cspl"
-
 (lambda (url verb post headers)
-	(respond
-		(render-template-file "../base.template.html" (
-			("title" . "Extending Crisp")
-			("body" . (render-template-file "_extending.template.html" (
-				("example" . (file-get-text "_example.template.html"))))))) 200 "text/html" ())) 
+	(require "~/lib/web.cspl"
+	(require "~/lib/templating.cspl"
+		(respond
+			(render-template-file "../base.template.html" (
+				("title" . "Extending Crisp")
+				("body" . (render-template-file "_extending.template.html" (
+					("example" . (file-get-text "_example.template.html"))))))) 200 "text/html" ()))))

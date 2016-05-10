@@ -1,67 +1,69 @@
 ﻿;; Crisp syntax highlighting library for Crisp code.
 ;; Copyright © Saul Johnson 2015-2016
 
-#require "~/lib/core.cspl"
-
 ;;; Syntax-highlights a list of function names in a string.
 ;;; @param [string] src		the source code to highlight
 ;;; @param [list] fns		the list of function names to highlight
 ;;; @param [string] color	the CSS color to use for highlighting
 (highlight-fns . (lambda (src fns color)
-	(if (null fns)
-		src
-		(letrec
-			(highlight-fns (regex-replace src (concat-all ("\((" fn ")")) wrapped) (cdr fns) color)
-			(wrapped . (concat-all (
-				"(<span style=" 
-				(chr 34) 
-				"color:"
-				color 
-				(chr 34) 
-				">$1</span>")))
-			(fn . (car fns))))))
+	(require "~/lib/core.cspl"
+		(if (null fns)
+			src
+			(letrec
+				(highlight-fns (regex-replace src (concat-all ("\((" fn ")")) wrapped) (cdr fns) color)
+				(wrapped . (concat-all (
+					"(<span style=" 
+					(chr 34) 
+					"color:"
+					color 
+					(chr 34) 
+					">$1</span>")))
+				(fn . (car fns)))))))
 
 ;;; Syntax-highlights all HTML-encoded quoted strings in a string.
 ;;; @param [string] src		the source code to highlight
 ;;; @param [string] color	the CSS color to use for highlighting
 (highlight-strings . (lambda (src color)
-	(regex-replace src "&quot;(.+?)&quot;" 
-		(concat-all (
-			"<span style=" 
-			(chr 34) 
-			"color:" 
-			color 
-			(chr 34) 
-			">&quot;$1&quot;</span>")))))
+	(require "~/lib/core.cspl"
+		(regex-replace src "&quot;(.+?)&quot;" 
+			(concat-all (
+				"<span style=" 
+				(chr 34) 
+				"color:" 
+				color 
+				(chr 34) 
+				">&quot;$1&quot;</span>"))))))
 			
 ;;; Syntax-highlights all Crisp-style comments in a string.
 ;;; @param [string] src		the source code to highlight
 ;;; @param [string] color	the CSS color to use for highlighting
 (highlight-comments . (lambda (src color)
-	(regex-replace src ";;(.+?)\r\n" 
-		(concat-all (
-			"<span style=" 
-			(chr 34) 
-			"color:" 
-			color 
-			(chr 34) 
-			">;;$1</span>"
-			(chr 13)
-			(chr 10))))))
+	(require "~/lib/core.cspl"
+		(regex-replace src ";;(.+?)\r\n" 
+			(concat-all (
+				"<span style=" 
+				(chr 34) 
+				"color:" 
+				color 
+				(chr 34) 
+				">;;$1</span>"
+				(chr 13)
+				(chr 10)))))))
 			
 ;; Syntax-highlights a string of Crisp code.
 ;; @param [string] src	the source code to highlight
 (highlight . (lambda (src)
-	(letrec 
-		(highlight-comments ;; Highlight comments.
-			(highlight-strings ;; Highlight strings.
-				(highlight-fns encoded functions "#CC0000") ;; Highlight function names.
-				"#00CCCC") "#00CC00")
-		(functions . (
-			"lambda" 
-			"let" 
-			"file-set-text" 
-			"replace" 
-			"file-get-text"
-			"add")) ;; Function names to highlight.
-		(encoded . (html-encode src))))) ;; HTML-encode output.
+	(require "~/lib/core.cspl"
+		(letrec 
+			(highlight-comments ;; Highlight comments.
+				(highlight-strings ;; Highlight strings.
+					(highlight-fns encoded functions "#CC0000") ;; Highlight function names.
+					"#00CCCC") "#00CC00")
+			(functions . (
+				"lambda" 
+				"let" 
+				"file-set-text" 
+				"replace" 
+				"file-get-text"
+				"add")) ;; Function names to highlight.
+			(encoded . (html-encode src)))))) ;; HTML-encode output.
